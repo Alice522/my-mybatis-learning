@@ -1,5 +1,6 @@
 package cn.fj.mybatis.session;
 
+import java.sql.Connection;
 import java.util.List;
 
 public interface SqlSession {
@@ -13,4 +14,14 @@ public interface SqlSession {
     <E> List<E> selectList(String statement, Object parameter);
 
     <T> T getMapper(Class<T> type);
+
+    Configuration getConfiguration();
+
+    void commit();
+
+    void rollback();
+
+    void close();
+
+    Connection getConnect();
 }

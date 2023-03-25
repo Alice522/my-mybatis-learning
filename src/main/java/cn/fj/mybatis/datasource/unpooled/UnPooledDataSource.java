@@ -83,7 +83,7 @@ public class UnPooledDataSource implements DataSource {
             properties.putAll(driverProperties);
         }
         if(username != null){
-            properties.setProperty("username",username);
+            properties.setProperty("user",username);
         }
         if (password != null) {
             properties.setProperty("password", password);

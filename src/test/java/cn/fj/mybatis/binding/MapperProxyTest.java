@@ -8,6 +8,7 @@ import cn.fj.mybatis.session.SqlSessionFactoryBuilder;
 import org.junit.jupiter.api.Test;
 
 import java.io.*;
+import java.sql.Connection;
 
 
 public class MapperProxyTest {
@@ -18,5 +19,6 @@ public class MapperProxyTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(new InputStreamReader(fileInputStream));
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
+        Connection connect = sqlSession.getConnect();
     }
 }
