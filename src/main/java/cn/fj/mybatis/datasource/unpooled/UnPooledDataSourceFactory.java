@@ -12,7 +12,7 @@ public class UnPooledDataSourceFactory implements DataSourceFactory {
 
     private static final String DRIVER_PROPERTY_PREFIX = "driver.";
     private static final int DRIVER_PROPERTY_PREFIX_LENGTH = DRIVER_PROPERTY_PREFIX.length();
-    private DataSource dataSource;
+    protected DataSource dataSource;
 
     public UnPooledDataSourceFactory() {
         this.dataSource = new UnPooledDataSource();

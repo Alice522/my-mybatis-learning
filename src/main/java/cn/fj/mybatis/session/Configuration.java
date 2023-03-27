@@ -1,6 +1,7 @@
 package cn.fj.mybatis.session;
 
 import cn.fj.mybatis.binding.MapperRegistry;
+import cn.fj.mybatis.datasource.pooled.PooledDataSourceFactory;
 import cn.fj.mybatis.datasource.unpooled.UnPooledDataSourceFactory;
 import cn.fj.mybatis.mapping.Environment;
 import cn.fj.mybatis.transaction.jdbc.JdbcTransactionFactory;
@@ -15,6 +16,7 @@ public class Configuration {
     public Configuration() {
         typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
         typeAliasRegistry.registerAlias("UNPOOLED", UnPooledDataSourceFactory.class);
+        typeAliasRegistry.registerAlias("POOLED", PooledDataSourceFactory.class);
     }
 
     public void addMappers(String packageName) {

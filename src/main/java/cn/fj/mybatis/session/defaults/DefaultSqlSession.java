@@ -49,6 +49,7 @@ public class DefaultSqlSession implements SqlSession {
 
     @Override
     public <E> List<E> selectList(String statement, Object parameter) {
+        //TODO mapperStatement
         ArrayList<E> list = new ArrayList<>();
         list.add((E) ("你被代理了！" + "方法：" + statement + " 入参：" + parameter));
         return list;

@@ -19,6 +19,9 @@ public class MapperProxyTest {
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(new InputStreamReader(fileInputStream));
 
         SqlSession sqlSession = sqlSessionFactory.openSession();
-        Connection connect = sqlSession.getConnect();
+        for(int i=0;i < 50;i++){
+            Connection connect = sqlSession.getConnect();
+            System.out.println(connect);
+        }
     }
 }
