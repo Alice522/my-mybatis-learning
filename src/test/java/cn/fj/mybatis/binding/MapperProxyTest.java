@@ -18,8 +18,8 @@ public class MapperProxyTest {
         FileInputStream fileInputStream = new FileInputStream("src/test/java/cn/fj/mybatis/resources/mybatis-config.xml");
         SqlSessionFactory sqlSessionFactory = new SqlSessionFactoryBuilder().build(new InputStreamReader(fileInputStream));
 
-        SqlSession sqlSession = sqlSessionFactory.openSession();
         for(int i=0;i < 50;i++){
+            SqlSession sqlSession = sqlSessionFactory.openSession();
             Connection connect = sqlSession.getConnect();
             System.out.println(connect);
         }

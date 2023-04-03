@@ -7,11 +7,16 @@ import cn.fj.mybatis.mapping.Environment;
 import cn.fj.mybatis.transaction.jdbc.JdbcTransactionFactory;
 import cn.fj.mybatis.type.TypeAliasRegistry;
 
+import java.util.HashSet;
+import java.util.Set;
+
 public class Configuration {
     protected Environment environment;
     protected MapperRegistry mapperRegistry = new MapperRegistry(this);
 
     protected TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
+
+    protected final Set<String> loadResources = new HashSet<>();
 
     public Configuration() {
         typeAliasRegistry.registerAlias("JDBC", JdbcTransactionFactory.class);
@@ -57,5 +62,13 @@ public class Configuration {
 
     public void setEnvironment(Environment environment) {
         this.environment = environment;
+    }
+
+    public void addLoadResource(String resource){
+        loadResources.add(resource);
+    }
+
+    public boolean isResourceLoaded(String resource){
+        return loadResources.contains(resource);
     }
 }

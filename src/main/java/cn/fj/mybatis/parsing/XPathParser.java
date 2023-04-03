@@ -13,8 +13,11 @@ import javax.xml.xpath.XPathFactory;
 import cn.fj.mybatis.bulider.BuilderException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 import org.xml.sax.InputSource;
 import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
 
 public class XPathParser {
 
@@ -30,6 +33,15 @@ public class XPathParser {
 
     public Node evalNode(String expression){
         return this.evalNode(expression,document);
+    }
+
+    public List<Node> evalNodes(String expression,Object root){
+        List<Node> nodes = new ArrayList<>();
+        NodeList nodeList = (NodeList) evaluate(expression, root, XPathConstants.NODESET);
+        for(int i=0;i < nodeList.getLength();i++){
+            nodes.add(nodeList.item(i));
+        }
+        return nodes;
     }
 
     public Node evalNode(String expression,Object root){
