@@ -4,17 +4,22 @@ import cn.fj.mybatis.binding.MapperRegistry;
 import cn.fj.mybatis.datasource.pooled.PooledDataSourceFactory;
 import cn.fj.mybatis.datasource.unpooled.UnPooledDataSourceFactory;
 import cn.fj.mybatis.mapping.Environment;
+import cn.fj.mybatis.mapping.MappedStatement;
 import cn.fj.mybatis.transaction.jdbc.JdbcTransactionFactory;
 import cn.fj.mybatis.type.TypeAliasRegistry;
 
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class Configuration {
     protected Environment environment;
     protected MapperRegistry mapperRegistry = new MapperRegistry(this);
 
     protected TypeAliasRegistry typeAliasRegistry = new TypeAliasRegistry();
+
+    protected Map<String, MappedStatement> statements = new ConcurrentHashMap<>();
 
     protected final Set<String> loadResources = new HashSet<>();
 
@@ -70,5 +75,9 @@ public class Configuration {
 
     public boolean isResourceLoaded(String resource){
         return loadResources.contains(resource);
+    }
+
+    public void addMappedStatement(MappedStatement mappedStatement){
+        statements.put(mappedStatement.getId(),mappedStatement);
     }
 }

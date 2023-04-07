@@ -1,6 +1,7 @@
 package cn.fj.mybatis.bulider.annotation;
 
 import cn.fj.mybatis.bulider.MapperBuilderAssistant;
+import cn.fj.mybatis.bulider.xml.XMLMapperBuilder;
 import cn.fj.mybatis.io.Resources;
 import cn.fj.mybatis.session.Configuration;
 
@@ -39,7 +40,8 @@ public class MapperAnnotationBuilder {
                 }
             }
             if(inputStream != null){
-
+                XMLMapperBuilder xmlMapperBuilder = new XMLMapperBuilder(configuration, inputStream, xmlResource, type.getName());
+                xmlMapperBuilder.parse();
             }
         }
     }

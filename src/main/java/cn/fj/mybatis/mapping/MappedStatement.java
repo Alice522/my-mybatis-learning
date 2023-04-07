@@ -35,6 +35,11 @@ public final class MappedStatement {
         public MappedStatement build(){
             return mappedStatement;
         }
+
+        public Builder statementType(StatementType statementType){
+            this.mappedStatement.statementType = statementType;
+            return this;
+        }
     }
 
     public String getResource() {

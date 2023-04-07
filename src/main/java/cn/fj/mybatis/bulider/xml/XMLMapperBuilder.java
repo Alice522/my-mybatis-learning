@@ -44,6 +44,9 @@ public class XMLMapperBuilder extends BaseBuilder {
     }
 
     private void buildStatementFromContext(List<Node> evalNodes) {
-
+        for(Node node : evalNodes){
+            XMLStatementBuilder xmlStatementBuilder = new XMLStatementBuilder(configuration, builderAssistant, node);
+            xmlStatementBuilder.parseStatementNode();
+        }
     }
 }
